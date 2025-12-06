@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - MyApp</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="auth-container">
+
+    <div class="auth-box">
+        <h2>Create Account</h2>
+
+        <form action="/signup" method="POST">
+
+            <label>Username</label>"
+            <input type="text" name="username" placeholder="Enter your Username" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required>
+
+
+            <a href="/main"><button type="submit" class="auth-btn">Sign Up</button></a>
+
+            <p class="switch-link">
+                Already have an account? <a href="/login">Login</a>
+            </p>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

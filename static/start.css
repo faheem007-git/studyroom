@@ -1,0 +1,124 @@
+/* ---------- GLOBAL STYLES ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1E3D2F, #2F5D45, #778873);
+  color: #F1F3E0;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #D2DCB6;
+  font-weight: 600;
+  margin-left: 25px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 25px;
+  color: #F1F3E0;
+}
+
+/* ---------- HERO SECTION ---------- */
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 50px;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 65px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #D2DCB6; /* light green heading */
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin: 20px 0;
+  color: #F1F3E0;
+  opacity: 0.85;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.btn {
+  padding: 14px 28px;
+  background: #2F5D45; /* deep green */
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  color: #F1F3E0;
+}
+
+.btn:hover {
+  background: #1E3D2F; /* darker hover */
+  color: #F1F3E0;
+}
+
+/* ---------- IMAGE SIDE ---------- */
+
+.hero-img img {
+  width: 380px;
+  filter: drop-shadow(0px 5px 20px rgba(0,0,0,0.35));
+}
+
+/* ---------- SMOOTH FLOATING EFFECT ---------- */
+
+.hero-img img {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 850px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-img img {
+    width: 300px;
+    margin-top: 30px;
+  }
+
+  .hero-text h1 {
+    font-size: 48px;
+  }
+}

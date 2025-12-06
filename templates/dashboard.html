@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App - Main Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <h2 class="logo">StudyRoom</h2>
+        <ul class="menu">
+            <li class="active">Home</li>
+            <li>Friends</li>
+            <li>Messages</li>
+            <li>Settings</li>
+        </ul>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="main">
+        <div class="header">
+            <h2>Welcome  {{ user.username }} ! </h2>
+        </div>
+
+        <div class="content-box">
+            <h3>Your Dashboard</h3>
+            <p>This is your main page area. Add cards, charts, or anything you want here.</p>
+        </div>
+        <a href="/create_room"><button id="createRoomBtn" class="create-room">+ Create Room</button></a>
+
+<div id="roomsContainer" class="rooms-container"></div>
+
+<script src="/staic/rooms.js"></script>
+    </div>
+
+</div>
+
+</body>
+</html>

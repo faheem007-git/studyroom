@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="main">
+    <h2 id="roomTitle"></h2>
+    <p>Welcome to your room!</p>
+</div>
+
+<div class="chat-box">
+    {% for m in messages %}
+        <p><b>{{ m.user.username }}:</b> {{ m.text }}</p>
+    {% endfor %}
+</div>
+
+<form action="/send_message/{{ room.id }}" method="POST">
+    <input name="message" placeholder="Type message">
+    <button type="submit">Send</button>
+</form>
+
+<form method="POST" action="/upload/{{ room.id }}" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button>Upload</button>
+</form>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomId = urlParams.get('room');
+    document.getElementById("roomTitle").innerText = "Room " + roomId;
+</script>
+
+</body>
+</html>
