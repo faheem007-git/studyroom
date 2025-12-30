@@ -1,39 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+<link rel="stylesheet" href="/static/room.css">
 
-<div class="main">
-    <h2 id="roomTitle"></h2>
-    <p>Welcome to your room!</p>
+<div class="room-container">
+
+    <header>
+        <h2>Room {{ room.room_code }}</h2>
+        <span>{{ room.room_type | upper }} • {{ room.level }}</span>
+    </header>
+
+    <!-- CHAT SECTION -->
+    {% if room.chat_type != "none" %}
+    <div class="chat-box">
+        <div class="messages">
+            {% if room.chat_type == "quick" %}
+                <p class="hint">Quick chat enabled</p>
+            {% else %}
+                <p class="hint">Free chat enabled</p>
+            {% endif %}
+        </div>
+
+        <input type="text" placeholder="Type message..." {% if room.chat_type == "quick" %}disabled{% endif %}>
+    </div>
+    {% endif %}
+
+    <!-- FILE UPLOAD -->
+    {% if room.file_upload == "on" %}
+    <button class="action-btn">📁 Upload File</button>
+    {% endif %}
+
+    <!-- VOICE CHAT -->
+    {% if room.voice_chat == "on" %}
+    <button class="action-btn">🎤 Join Voice</button>
+    {% endif %}
+
 </div>
-
-<div class="chat-box">
-    {% for m in messages %}
-        <p><b>{{ m.user.username }}:</b> {{ m.text }}</p>
-    {% endfor %}
-</div>
-
-<form action="/send_message/{{ room.id }}" method="POST">
-    <input name="message" placeholder="Type message">
-    <button type="submit">Send</button>
-</form>
-
-<form method="POST" action="/upload/{{ room.id }}" enctype="multipart/form-data">
-    <input type="file" name="file">
-    <button>Upload</button>
-</form>
-
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const roomId = urlParams.get('room');
-    document.getElementById("roomTitle").innerText = "Room " + roomId;
-</script>
-
-</body>
-</html>

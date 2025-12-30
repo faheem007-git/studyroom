@@ -1,17 +1,113 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+<link rel="stylesheet" href="/static/create_room.css">
 
-<h1>Create a Room</h1>
+<div class="create-room-wrapper">
 
-<form method="POST">
-    <input type="text" name="room_name" placeholder="Room Name" class="input" required>
-    <input type="text" name="room_id" placeholder="Room ID" class="input" required>
-    <button class="btn">Create Room</button>
-</form>
+  <!-- LEFT -->
+  <div class="room-preview">
+      <img src="/static/third.jpg">
+      <div class="preview-title">Study room</div>
+  </div>
 
-</body>
-</html>
+  <!-- RIGHT -->
+  <div class="room-settings">
+
+      <div class="top-bar">
+          <button class="back-btn">← Back</button>
+          <h2>Create Room</h2>
+      </div>
+ 
+      <!-- TABS -->
+<div class="tabs">
+    <div class="tab active" data-tab="general">GENERAL</div>
+    <div class="tab" data-tab="chat">CHAT</div>
+</div>
+
+<!-- GENERAL TAB -->
+<div class="tab-content active" id="general">
+    <<form method="POST"  action="/create_room">
+      <div class="setting">
+          <label>Room Type</label>
+          <div class="option-group">
+              <div class="option active">Public</div>
+              <div class="option">Private</div>
+              <div class="option">Timed</div>
+          </div>
+      </div>
+
+      <div class="setting">
+          <label>Capacity</label>
+          <input type="number" value="10">
+      </div>
+
+      <div class="setting">
+          <label>Level</label>
+          <div class="option-group">
+              <div class="option active">Beginner</div>
+              <div class="option">Intermediate</div>
+              <div class="option">Expert</div>
+          </div>
+      </div>
+
+      <div class="setting">
+          <label>Region</label>
+          <select>
+              <option>Asia</option>
+              <option>Europe</option>
+              <option>US</option>
+          </select>
+      </div>
+      
+
+      <button class="create-btn">CREATE ROOM</button>
+</div>
+
+<!-- CHAT TAB -->
+<div class="tab-content" id="chat">
+
+    <!-- CHAT TYPE -->
+    <div class="setting">
+        <label>Chat Type</label>
+        <div class="option-group" data-name="chat_type">
+            <div class="option active" data-value="quick">Quick Chat</div>
+            <div class="option" data-value="free">Free Chat</div>
+            <div class="option" data-value="none">No Chat</div>
+        </div>
+        <input type="hidden" name="chat_type" value="quick">
+    </div>
+
+    <!-- FILE UPLOAD -->
+    <div class="setting">
+        <label>File Upload</label>
+        <div class="option-group" data-name="file_upload">
+            <div class="option active" data-value="on">On</div>
+            <div class="option" data-value="off">Off</div>
+        </div>
+        <input type="hidden" name="file_upload" value="on">
+    </div>
+
+    <!-- VOICE CHAT -->
+    <div class="setting">
+        <label>Voice Chat</label>
+        <div class="option-group" data-name="voice_chat">
+            <div class="option active" data-value="on">On</div>
+            <div class="option" data-value="off">Off</div>
+        </div>
+        <input type="hidden" name="voice_chat" value="on">
+    </div>
+
+    <!-- EXTRA CHAT SETTINGS -->
+    <div class="setting">
+        <label>Emoji & Links</label>
+        <div class="option-group" data-name="extras">
+            <div class="option active" data-value="enabled">Enabled</div>
+            <div class="option" data-value="disabled">Disabled</div>
+        </div>
+        <input type="hidden" name="extras" value="enabled">
+    </div>
+
+</div>
+
+      </form>
+  </div>
+</div>
+<script src="/static/create_room.js"></script>

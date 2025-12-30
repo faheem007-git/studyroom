@@ -8,8 +8,8 @@
 }
 
 body {
-  background: linear-gradient(135deg, #1E3D2F, #2F5D45, #778873);
-  color: #F1F3E0;
+  background: linear-gradient( #7B9669);
+  color: #000;
   height: 100vh;
   overflow-x: hidden;
 }
@@ -71,14 +71,14 @@ body {
 
 .btn {
   padding: 14px 28px;
-  background: #2F5D45; /* deep green */
+  background: #E6E6E6; /* deep green */
   border-radius: 12px;
   border: none;
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
   transition: 0.3s ease;
-  color: #F1F3E0;
+  color: #000;
 }
 
 .btn:hover {

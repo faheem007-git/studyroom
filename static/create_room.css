@@ -1,0 +1,187 @@
+/* =====================
+   GLOBAL
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #7B9669;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =====================
+   MAIN LAYOUT
+===================== */
+.create-room-wrapper {
+    width: 1000px;
+    height: 560px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    background: #e6e6e6;
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+/* =====================
+   LEFT PREVIEW
+===================== */
+.room-preview {
+    background: linear-gradient(#e6e6e6);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.room-preview img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.preview-title {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* =====================
+   RIGHT PANEL
+===================== */
+.room-settings {
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =====================
+   TOP BAR
+===================== */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.top-bar h2 {
+    font-size: 22px;
+}
+
+.back-btn {
+    background: #7B9669;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #000;
+}
+
+/* =====================
+   TABS
+===================== */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background: #7B9669;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tab.active {
+    background: #2ecc71;
+    color: #000;
+}
+
+/* =====================
+   SETTINGS ROWS
+===================== */
+.setting {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.setting label {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* =====================
+   OPTIONS
+===================== */
+.option-group {
+    display: flex;
+    gap: 10px;
+}
+
+.option {
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #7B9669;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.option.active {
+    background: #2ecc71;
+    color: #000;
+    font-weight: 600;
+}
+
+/* =====================
+   INPUTS
+===================== */
+input, select {
+    background: #7B9669;
+    border: 1px solid #2f8f7a;
+    color: #000;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+/* =====================
+   CREATE BUTTON
+===================== */
+.create-btn {
+    margin-top: auto;
+    align-self: center;
+    width: 220px;
+    padding: 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2ecc71);
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    margin-left:auto;
+}
+
+.create-btn:hover {
+    transform: scale(1.05);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}

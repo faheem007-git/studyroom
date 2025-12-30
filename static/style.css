@@ -1,9 +1,9 @@
 /* DARK THEME */
 body {
     margin: 0;
-    background: #0f1f17; /* Dark green shade */
+    background: #7B9669; /* Dark green shade */
     font-family: Arial, sans-serif;
-    color: #e2e2e2;
+    color: #000;
 }
 
 /* LAYOUT WRAPPER */
@@ -15,13 +15,13 @@ body {
 /* LEFT SIDEBAR */
 .sidebar {
     width: 250px;
-    background: #0d261a; /* darker green */
+    background: #e6e6e6; /* darker green */
     padding: 20px;
     box-shadow: 2px 0px 6px rgba(0,0,0,0.3);
 }
 
 .logo {
-    color: #34d399; /* bright green */
+    color: #000; /* bright green */
     text-align: center;
     margin-bottom: 30px;
 }
@@ -41,13 +41,14 @@ body {
 
 .menu li:hover,
 .menu .active {
-    background: #1e3d2f;
+    background: #e6e6e6;
 }
 
 /* MAIN CONTENT */
 .main {
     flex: 1;
-    padding: 30px;
+    padding: 10px;
+    margin-left:0px;
 }
 
 .header h2 {
@@ -56,7 +57,7 @@ body {
 
 .content-box {
     margin-top: 30px;
-    background: #1a3328;
+    background: #e6e6e6;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
@@ -70,12 +71,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0f1f17; /* dark green */
+    background: #7B9669; 
 }
 
 .auth-box {
     width: 360px;
-    background: #1a3328;
+    background: #E6E6E6;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.35);
@@ -84,7 +85,7 @@ body {
 .auth-box h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #34d399;
+    color: #2ecc71;
 }
 
 /* Input Styling */
@@ -94,8 +95,8 @@ body {
     margin: 8px 0 18px 0;
     border: none;
     outline: none;
-    background: #0d261a;
-    color: white;
+    background: #7B9669;
+    color: #000;
     border-radius: 6px;
 }
 
@@ -103,7 +104,7 @@ body {
 .auth-btn {
     width: 100%;
     padding: 12px;
-    background: #34d399;
+    background: #2ecc71;
     color: black;
     font-weight: bold;
     border: none;
@@ -113,9 +114,12 @@ body {
 }
 
 .auth-btn:hover {
-    background: #27a77a;
+    background: #2ecc71;
 }
 
+input::placehlder{
+    color:#000;
+}
 /* Text link */
 .switch-link {
     text-align: center;
@@ -135,12 +139,12 @@ body {
 .logo {
   font-weight: 700;
   font-size: 25px;
-  color: #F1F3E0;
+  color: #000;
   margin-left:25px;
 }
 
 .create-room {
-    background: #34d399;
+    background: #2ecc71;
     padding: 10px 18px;
     border: none;
     border-radius: 8px;
@@ -164,3 +168,10 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+

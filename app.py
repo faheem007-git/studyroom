@@ -24,9 +24,18 @@ class User(db.Model):
 
 class Room(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))             # <-- ADD THIS
     room_code = db.Column(db.String(10), unique=True)
-    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    room_type = db.Column(db.String(20))
+    level = db.Column(db.String(20))
+    capacity = db.Column(db.Integer)
+
+    chat_type = db.Column(db.String(20))      
+    file_upload = db.Column(db.String(5))     
+    voice_chat = db.Column(db.String(5))      
+    extras = db.Column(db.String(10))         
+
+    created_by = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 class Message(db.Model):
@@ -108,27 +117,37 @@ def dashboard():
 @app.route("/create_room", methods=["GET", "POST"])
 def create_room():
     if request.method == "POST":
-        room_name = request.form.get("room_name", "").strip() or "Untitled Room"
-        room_code = str(uuid.uuid4())[:8]
-
         room = Room(
-            name=room_name,
-            room_code=room_code,
-            created_by=session['user_id']
+            room_code=str(uuid.uuid4())[:6],
+            room_type=request.form.get("room_type"),
+            level=request.form.get("level"),
+            capacity=request.form.get("capacity"),
+
+            chat_type=request.form.get("chat_type"),
+            file_upload=request.form.get("file_upload"),
+            voice_chat=request.form.get("voice_chat"),
+            extras=request.form.get("extras"),
+
+            created_by=session.get("user_id")
         )
 
         db.session.add(room)
         db.session.commit()
 
-        return redirect(url_for("room", room_id=room.id))
+        return redirect(url_for("room", room_code=room.room_code))
 
     return render_template("create_room.html")
 
-@app.route('/room/<room_id>')
-def room(room_id):
-    room = Room.query.get_or_404(room_id)
-    messages = Message.query.filter_by(room_id=room_id).all()
-    return render_template('room.html', room=room, messages=messages)
+
+
+
+
+
+@app.route("/room/<room_code>")
+def room(room_code):
+    room = Room.query.filter_by(room_code=room_code).first_or_404()
+    return render_template("room.html", room=room)
+
 
 
 @app.route('/send_message/<room_id>', methods=['POST'])
