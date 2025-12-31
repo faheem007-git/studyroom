@@ -175,3 +175,7 @@ input::placehlder{
     font-family: "Poppins", sans-serif;
 }
 
+::placeholder {
+    color: #000;
+    opacity: 1;
+}
