@@ -190,3 +190,13 @@ input::placehlder{
     margin-top: 20px;
     margin-left: 100px;
 }
+.password-wrapper {
+    position: relative;
+}
+
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    cursor: pointer;
+}

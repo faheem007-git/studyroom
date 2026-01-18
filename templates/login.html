@@ -79,7 +79,11 @@
         <p> Log in to start studying with your friends</p>
          <form action="/login" method="post">
         <input type="text" name="username" class="login-input" placeholder="Username">
-        <input type="password" name="password" class="login-input" placeholder="Password">
+        <div class="password-wrapper">
+    <input type="password" id="password" name="password" class="login-input" placeholder="Enter Password" required>
+    <span onclick="togglePassword()" class="eye">👁️</span>
+</div>
+
 
         <button class="login-btn">Log in</button>
 
@@ -87,6 +91,21 @@
         <P>click here to create an account</p>
             
     </div>
+<script>
+function togglePassword() {
+    const pass = document.getElementById("password");
+    const confirm = document.getElementById("confirm_password");
+
+    if (pass.type === "password") {
+        pass.type = "text";
+        if (confirm) confirm.type = "text";
+    } else {
+        pass.type = "password";
+        if (confirm) confirm.type = "password";
+    }
+}
+</script>
+
 
 </body>
 </html>

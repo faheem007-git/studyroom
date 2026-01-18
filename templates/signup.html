@@ -22,7 +22,11 @@
             <input type="email" name="email" placeholder="Enter your email" required>
 
             <label>Password</label>
-            <input type="password" name="password" placeholder="Create a password" required>
+             <div class="password-wrapper">
+    <input type="password" id="password" name="password"  placeholder="Create Password" required>
+    <span onclick="togglePassword()" class="eye">👁️</span>
+</div>
+
 
 
             <a href="/main"><button type="submit" class="auth-btn">Sign Up</button></a>
@@ -34,6 +38,19 @@
     </div>
 
 </div>
+<script>
+function togglePassword() {
+    const pass = document.getElementById("password");
+    const confirm = document.getElementById("confirm_password");
 
+    if (pass.type === "password") {
+        pass.type = "text";
+        if (confirm) confirm.type = "text";
+    } else {
+        pass.type = "password";
+        if (confirm) confirm.type = "password";
+    }
+}
+</script>
 </body>
 </html>
