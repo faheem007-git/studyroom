@@ -95,6 +95,11 @@ def home():
     rooms = Room.query.order_by(Room.created_at.desc()).all()
     return render_template("index.html", rooms=rooms)
 
+@app.route('/features')
+def features():
+    return render_template('features.html')
+
+
 @app.route('/')
 def index():
     if 'user_id' not in session:
