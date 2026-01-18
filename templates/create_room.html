@@ -4,7 +4,7 @@
 
   <!-- LEFT -->
   <div class="room-preview">
-      <img src="/static/third.jpg">
+      <img src="/static/third.png">
       <div class="preview-title">Study room</div>
   </div>
 
@@ -24,7 +24,7 @@
 
 <!-- GENERAL TAB -->
 <div class="tab-content active" id="general">
-    <<form method="POST"  action="/create_room">
+    <form method="POST"  action="/create_room">
       <div class="setting">
           <label>Room Type</label>
           <div class="option-group">
@@ -40,13 +40,9 @@
       </div>
 
       <div class="setting">
-          <label>Level</label>
-          <div class="option-group">
-              <div class="option active">Beginner</div>
-              <div class="option">Intermediate</div>
-              <div class="option">Expert</div>
-          </div>
-      </div>
+          <label>Room Name</label>
+          <input type="text" placeholder="Enter room name">
+      </div>    
 
       <div class="setting">
           <label>Region</label>
@@ -104,6 +100,15 @@
         </div>
         <input type="hidden" name="extras" value="enabled">
     </div>
+
+    <div class="setting">
+  <label>Pomodoro Timer</label>
+  <select name="pomodoro">
+    <option value="off">Off</option>
+    <option value="on">On</option>
+  </select>
+</div>
+
 
 </div>
 
