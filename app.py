@@ -84,7 +84,8 @@ class RoomFile(db.Model):
     room_id = db.Column(db.Integer, db.ForeignKey('room.id'), nullable=False)
     uploaded_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
-    
+with app.app_context():
+    db.create_all()   
 
 
 @app.route("/", methods=["GET"])
@@ -353,6 +354,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
