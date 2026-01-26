@@ -7,13 +7,12 @@ import os
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from datetime import datetime
-from dotenv import load_dotenv
-load_dotenv()
+
 
 
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")
+app.secret_key = os.getenv("SECRET_KEY","supersecret123")
 database_url = os.environ.get("DATABASE_URL")
 if database_url and database_url.startswith("postgres://"):
     database_url = database_url.replace("postgres://", "postgresql://", 1)
@@ -135,9 +134,20 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
+        
+        existing_email = User.query.filter_by(email=email).first()
+        existing_username = User.query.filter_by(username=username).first()
+
+        if existing_email:
+            return render_template("signup.html", error="Email already registered")
+
+        if existing_username:
+            return render_template("signup.html", error="Username already taken")
+        hashed_pw = generate_password_hash(password)
+
 
         # Save user to DB
-        new_user = User(username=username, email=email, password=password)
+        new_user = User(username=username, email=email, password=hashed_pw)
         db.session.add(new_user)
         db.session.commit()
 

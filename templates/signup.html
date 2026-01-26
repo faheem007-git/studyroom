@@ -34,6 +34,10 @@
             <p class="switch-link">
                 Already have an account? <a href="/login">Login</a>
             </p>
+            {% if error %}
+                <p style="color:red; text-align:center;">{{ error }}</p>
+            {% endif %}
+
         </form>
     </div>
 
