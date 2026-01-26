@@ -180,8 +180,9 @@ header span {
   padding: 15px;
   margin-bottom: 15px;
   text-align: center;
-  margin-left: 300px;
-  margin-right: 300px;
+ margin: 15px auto;
+  width: 100%;
+  max-width: 500px;
 }
 
 .timer-display {
@@ -209,4 +210,150 @@ header span {
   margin-top: 8px;
   font-size: 14px;
   color: #145a32;
+}
+
+/* ---------------- MOBILE & TABLET RESPONSIVE ---------------- */
+
+@media (max-width: 900px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .room-container {
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  /* Members panel moves to top */
+  .members-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #1f3f3a;
+    margin-bottom: 15px;
+  }
+
+  .member {
+    justify-content: center;
+  }
+
+  /* Chat box full width */
+  .chat-box {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .messages {
+    min-height: 200px;
+  }
+
+  /* Buttons full width */
+  .action-btn,
+  .files-btn {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  /* Pomodoro center fix */
+  .pomodoro-box {
+    margin: 10px auto;
+    width: 100%;
+  }
+
+  .timer-display {
+    font-size: 30px;
+  }
+
+  /* Files panel full width */
+  .files-panel {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+}
+
+
+/* ---------------- EXTRA SMALL PHONES ---------------- */
+
+@media (max-width: 500px) {
+
+  header h2 {
+    font-size: 18px;
+  }
+
+  header span {
+    font-size: 12px;
+  }
+
+  .name {
+    font-size: 13px;
+  }
+
+  .timer-display {
+    font-size: 26px;
+  }
+
+}
+
+.room-layout {
+  display: flex;
+  gap: 15px;
+}
+
+/* main area */
+.room-main {
+  flex: 1;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 900px) {
+
+  .room-layout {
+    flex-direction: column;
+  }
+
+  .members-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #1f3f3a;
+    text-align: center;
+  }
+
+  .room-main {
+    width: 100%;
+  }
+
+  .room-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .chat-box {
+    width: 100%;
+  }
+
+  .action-btn,
+  .files-btn {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .files-panel {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .pomodoro-box {
+    width: 100%;
+    margin: 10px auto;
+  }
 }

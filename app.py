@@ -7,6 +7,8 @@ import os
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 
 

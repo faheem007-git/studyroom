@@ -75,7 +75,8 @@ body {
 }
 
 .auth-box {
-    width: 360px;
+    width: 90%;
+    max-width: 360px;
     background: #E6E6E6;
     padding: 30px;
     border-radius: 12px;
@@ -144,25 +145,25 @@ input::placehlder{
 }
 
 .create-room {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
     background: #2ecc71;
+    color: black;
     padding: 10px 18px;
-    border: none;
     border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 400px;
+    font-weight: 600;
 }
 
+
 .rooms-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
 }
 
 .room-card {
-    width: 200px;
+    width: 100%;
     padding: 15px;
     background: #1a3328;
     border-radius: 10px;
@@ -180,16 +181,16 @@ input::placehlder{
     opacity: 1;
 }
 .join{
-     background: #2ecc71;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background: #2ecc71;
+    color: black;
     padding: 10px 18px;
-    border: none;
     border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 100px;
+    font-weight: 600;
 }
+
 .password-wrapper {
     position: relative;
 }
@@ -199,4 +200,58 @@ input::placehlder{
     right: 10px;
     top: 8px;
     cursor: pointer;
+}
+/* ---------------- RESPONSIVE DESIGN ---------------- */
+
+@media (max-width: 900px) {
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    gap: 15px;
+  }
+
+  .menu li {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 15px;
+  }
+   .create-room,
+  .join {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .logo {
+    font-size: 18px;
+    margin-left: 0;
+  }
+
+  .content-box {
+    padding: 15px;
+  }
+
 }

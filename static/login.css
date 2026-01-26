@@ -21,7 +21,8 @@ body {
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    width: 350px;
+    width: 100%;
+    max-width: 380px; 
 }
 
 .login-card h2 {
@@ -84,4 +85,13 @@ body {
 .switch a {
     color: #1ABC9C;
     text-decoration: none;
+}
+@media (max-width: 480px) {
+    .login-card h2 {
+        font-size: 24px;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
 }
