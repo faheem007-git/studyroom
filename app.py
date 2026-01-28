@@ -134,6 +134,8 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
+        hashed_pw = generate_password_hash(password)
+
         
         existing_email = User.query.filter_by(email=email).first()
         existing_username = User.query.filter_by(username=username).first()
@@ -143,13 +145,16 @@ def signup():
 
         if existing_username:
             return render_template("signup.html", error="Username already taken")
-        hashed_pw = generate_password_hash(password)
-
+        
 
         # Save user to DB
         new_user = User(username=username, email=email, password=hashed_pw)
         db.session.add(new_user)
         db.session.commit()
+        
+        session['user_id'] = new_user.id
+        session['username'] = new_user.username
+
 
         return redirect(url_for('dashboard'))
 
@@ -353,6 +358,21 @@ def upload_file(room_id):
 @app.route("/files/<filename>")
 def download_file(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename, as_attachment=True)
+
+@app.route("/forgot_password", methods=["GET", "POST"])
+def forgot_password():
+    if request.method == "POST":
+        email = request.form["email"]
+
+        user = User.query.filter_by(email=email).first()
+
+        if not user:
+            return render_template("forgot_password.html", error="Email not found")
+
+        return redirect(url_for("reset_password", user_id=user.id))
+
+    return render_template("forgot_password.html")
+
 
 
 
