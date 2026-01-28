@@ -133,7 +133,7 @@ def signup():
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
-        password = generate_password_hash(request.form['password'])
+        password = request.form['password']
         hashed_pw = generate_password_hash(password)
 
         
