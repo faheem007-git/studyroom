@@ -4,5 +4,5 @@ python-dotenv==1.0.0
 gunicorn==21.2.0
 werkzeug==3.0.2
 psycopg2-binary==2.9.6
-flask-socketIO
-eventlet==5.3.2
+Flask-socketIO
+eventlet==0.33.3
