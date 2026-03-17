@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/static/room.css">
 <script src="/static/pomodoro.js"></script>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
 <div class="room-layout">
 
@@ -59,6 +60,11 @@
         <span>{{ room.room_type | upper }} • {{ room.level }}</span>
       </header>
 
+      <script>
+        const ROOM_CODE = "{{ room.room_code }}";
+      </script>
+
+
       {% if room.chat_type != "none" %}
       <div class="chat-box">
         <div class="messages">
@@ -99,3 +105,4 @@ toggleBtn.addEventListener("click", () => {
   filesPanel.classList.toggle("active");
 });
 </script>
+

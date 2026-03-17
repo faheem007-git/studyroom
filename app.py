@@ -7,6 +7,7 @@ import os
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from datetime import datetime
+from flask_socketio import SocketIO, emit, join_room
 
 
 
@@ -26,7 +27,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 
 class User(db.Model):
@@ -352,6 +353,16 @@ def upload_file(room_id):
     db.session.commit()
 
     room = db.session.get(Room, room_id)
+    
+    socketio.emit(
+    "chart_added",
+    {
+        "filename": file.filename,
+        "url": f"/files/{file.filename}"
+    },
+    room=str(room.id)
+)
+    
     return redirect(url_for("room", room_code=room.room_code))
 
 
@@ -374,6 +385,25 @@ def forgot_password():
     return render_template("forgot_password.html")
 
 
+@socketio.on("join")
+def handle_join(data):
+    room_id = data["room_id"]
+    join_room(room_id)
+
+@socketio.on("send_message")
+def handle_message(data):
+    room_id = data["room_id"]
+    message = data["message"]
+    username = session.get("username", "User")
+
+    socketio.emit(
+        "receive_message",
+        {
+            "username": username,
+            "message": message
+        },
+        room=str(room_id)
+    )
 
 
 
@@ -386,4 +416,5 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    socketio.run(app, debug=True)
+
