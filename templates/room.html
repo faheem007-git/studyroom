@@ -1,27 +1,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/static/room.css">
-<script src="/static/pomodoro.js"></script>
-<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
 
 <div class="room-layout">
 
-  <!-- MEMBERS -->
   <aside class="members-panel">
     <h3>Members</h3>
-    <ul class="member-list">
-      {% for username, status in members %}
-      <li class="member">
-        <span class="status {{ status }}"></span>
-        <span class="name">{{ username }}</span>
-      </li>
-      {% endfor %}
-    </ul>
+    <ul class="member-list"></ul>
   </aside>
 
-  <!-- MAIN ROOM AREA -->
+  
   <div class="room-main">
 
-    <!-- FILES -->
+    
     <div class="files">
       <button id="toggleFiles" class="files-btn">Files</button>
     </div>
@@ -36,7 +27,7 @@
       {% endfor %}
     </div>
 
-    <!-- POMODORO -->
+    
     {% if room.pomodoro_enabled %}
     <div class="pomodoro-box">
       <h3>Pomodoro Timer</h3>
@@ -52,7 +43,7 @@
     </div>
     {% endif %}
 
-    <!-- ROOM CONTENT -->
+    
     <div class="room-container">
 
       <header>
@@ -63,15 +54,15 @@
       <script>
         const ROOM_CODE = "{{ room.room_code }}";
       </script>
-
+      <script src="/static/room.js"></script>
 
       {% if room.chat_type != "none" %}
       <div class="chat-box">
-        <div class="messages">
+        <div class="message">
           {% if room.chat_type == "quick" %}
             <p class="hint">Quick chat enabled</p>
           {% else %}
-            <p class="hint">Free chat enabled</p>
+            <div class="messages" id="messagesBox"></div>
           {% endif %}
         </div>
 
@@ -90,12 +81,14 @@
       </form>
 
       {% if room.voice_chat == "on" %}
-      <button class="action-btn">🎤 Join Voice</button>
+      <button class="action-btn"> Join Voice</button>
       {% endif %}
 
     </div>
   </div>
 </div>
+<script src="/static/pomodoro.js"></script>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
 <script>
 const toggleBtn = document.getElementById("toggleFiles");
@@ -105,4 +98,3 @@ toggleBtn.addEventListener("click", () => {
   filesPanel.classList.toggle("active");
 });
 </script>
-

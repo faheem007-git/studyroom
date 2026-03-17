@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from datetime import datetime
 from flask_socketio import SocketIO, emit, join_room
-
+from flask import session
 
 
 
@@ -24,7 +24,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 db = SQLAlchemy(app)
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
+rooms_members = {}
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -118,6 +118,8 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
+            
+            session.clear()
             # store login info in session
             session['user_id'] = user.id
             session['username'] = user.username
@@ -127,6 +129,7 @@ def login():
             return "Invalid username or password"
 
     return render_template('login.html')
+
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -297,7 +300,7 @@ def upload(room_id):
     return redirect(url_for('room', room_id=room_id))
 
 @app.route("/join_room", methods=["GET", "POST"])
-def join_room():
+def joining_room():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
@@ -388,13 +391,27 @@ def forgot_password():
 @socketio.on("join")
 def handle_join(data):
     room_id = data["room_id"]
-    join_room(room_id)
+    username = session.get("username", "User")
+    print("JOIN:" , room_id,username)
+    join_room((room_id))
+    
+    if room_id not in rooms_members:
+        rooms_members[room_id] = []
+        
+    if username not in rooms_members[room_id]:
+        rooms_members[room_id].append(username) 
+        
+    print("MEMBERS:",rooms_members[room_id])    
+        
+    emit("update_members" , rooms_members[room_id],room=room_id)
 
 @socketio.on("send_message")
 def handle_message(data):
     room_id = data["room_id"]
     message = data["message"]
     username = session.get("username", "User")
+    
+    print("MESSAGE RECEIVED:", username,message)
 
     socketio.emit(
         "receive_message",
@@ -402,7 +419,7 @@ def handle_message(data):
             "username": username,
             "message": message
         },
-        room=str(room_id)
+        room=(room_id)
     )
 
 
