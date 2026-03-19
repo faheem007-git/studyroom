@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------
   // REAL-TIME FILE SHARING
   // -----------------------------
+  const toggleBtn = document.getElementById("toggleFiles");
   const filesPanel = document.getElementById("filesPanel");
 
   if (filesPanel) {
@@ -79,11 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------
   // FILE PANEL TOGGLE
   // -----------------------------
-  const toggleBtn = document.getElementById("toggleFiles");
+  
 
   if (toggleBtn && filesPanel) {
     toggleBtn.addEventListener("click", function () {
+      console.log("Toggling file panel");
       filesPanel.classList.toggle("active");
+
     });
   }
 
